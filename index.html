@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wellfleet&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&family=Cardo:ital,wght@0,400;0,700;1,400&family=Cute+Font&family=Roboto:ital,wght@0,100..900;1,100..900&family=Wellfleet&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <span> LIBRARY</span>
+    </div>
+
+    <div class="body">
+        <div class="plus-btn-wrapper">
+            <button class="plus-btn">+</button>
+        </div>
+        <div id="content">
+            sque faucibus ex sapien vitae pellentesque sem placerat. 
+            In id cursus mi pretium tellus duis convallis. 
+            Tempus leo eu aenean sed diam urna tempor. 
+            Pulvinar vivamus fringilla lacus nec metus bibendum egestas. 
+            Iaculis massa nisl malesuada lacinia integer nunc posuere. 
+            Ut hendrerit semper vel class aptent taciti sociosqu. 
+            Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. 
+            Qu  i
+        </div>
+
+    <div id="modal" class="pop-modal">
+    <form action='' id="form">
+            <button type="button" class="close-btn">✖</button>
+            <h2>Add a new book</h2>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="book" placeholder="Title">
+
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author" placeholder="Author">
+
+       <label for="pages">Pages</label>
+      <input type="number" id="pages" name="page" placeholder="245">
+
+      <label for="status">Status</label>
+      <select id="status" name="status">
+        <option value="Read">Read</option>
+        <option value="Not Read">Not Read</option>
+      </select>
+      
+      <!-- <label for="link">URL Link</label>
+      <input type="text" id="link" name="photo-link" placeholder="gooogle.com"> -->
+      <input type="submit" value="Submit" id="submit">
+
+      
+    </form>
+    </div>
+    <div class="pop opacity-provider" id="opacity"></div>
+
+    </div>
+    
+ </div>
+  
+    
+   
+<script src="script.js"></script>
+</body>
+</html>

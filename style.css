@@ -1,0 +1,127 @@
+* {
+margin:0;
+padding:0;
+font-family: "Roboto", sans-serif;
+}
+.container {
+    
+    flex-direction: column;
+}
+.header {
+    background-color: #d9c1bb;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+  
+}
+.body {
+    background-color: #45a049;
+    position: absolute;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+   
+}
+#content {
+  display: inline-block;
+}
+
+.header span { 
+    font-family:"Wellfleet", serif;
+}
+
+.plus-btn {
+  position: absolute;
+	bottom: 115px;
+	right: 22px;
+	width: 55px;
+	height: 50px;
+  font-size: 35px;
+  line-height: 15px;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  border-radius: 50%;
+  color: #888;
+  border: 1px solid #eee;
+  padding: 0;
+}
+
+
+
+/* FORMS */
+#modal {
+  display: none;
+ position: relative;
+ bottom: 70px;
+ z-index:101;    
+}
+h2 {
+  text-align: center;
+}
+.close-btn {
+  margin-left: 380px;
+  background: #eee;
+  border-radius: 50%;
+  color: #888;
+  border: 1px solid #eee;
+  padding: 0;
+   font-weight: 400;
+  font-size: 18px;
+  height: 24px;
+  width: 24px;
+}
+form {
+ text-align: left;
+  width: 400px;
+  height: 450px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+label {display: block;}
+
+input[type=text],input[type=number],select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div.opacity-provider {
+    display:none;    
+    top:0;
+    left:0;
+    min-width:100%;
+    min-height:100%;
+    opacity:0.4;
+    filter:alpha(opacity=50);  
+    position:absolute;
+     background:black;
+    z-index:100;  
+}
+
+
+
