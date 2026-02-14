@@ -1,11 +1,15 @@
 
 const addBtn = document.querySelector(".plus-btn");
 const closeBtn = document.querySelector(".close-btn");
-const form = document.getElementById("form");
+const form = document.getElementById("myForm");
+const deleteBtn = document.querySelector("delete");
+
+
 
 closeBtn.addEventListener("click", hideModal);
 addBtn.addEventListener("click", openModal);
 form.addEventListener("submit", formDatas);
+
 
 var modal = document.getElementById("modal");
 var content = document.getElementById("content");
@@ -15,59 +19,128 @@ var opacity = document.getElementById("opacity");
 function hideModal() {
    modal.style.display = "none";
    opacity.style.display = "none";
+   form.reset();
 }
 
 function openModal() {
     modal.style.display = "inline-block";
     opacity.style.display = "inline-block"
-    console.log("looo");
+    
 }
 
 
-const myLibrary = [] //array
+// Array
+const myLibrary = []
 
-
+//Constructor
 function Books(book, author, page, status) {
     this.book = book
     this.author = author
     this.page = page
     this.status = status
-    this.ID =  uuidv4() 
+    this.bookID =  uuidv4() 
     this.sayname = function() {
-        console.log(this.ID)
+        console.log(this.bookID)
     }
 }
 
-
+//received data
 function formDatas(e) {
    e.preventDefault();
   let book = document.getElementById("title").value
-  let authors = document.getElementById("author").value
-  let pages = document.getElementById("pages").value
+  let author = document.getElementById("author").value
+  let page = document.getElementById("pages").value
   let status = document.getElementById("status").value
 
-  addBookToLibrary(book, authors, pages, status);
+  addBookToLibrary(book, author, page, status);
+  form.reset();
 
    modal.style.display = "none";
    opacity.style.display = "none";
 }
-//add books to library
-function addBookToLibrary(book, authors, pages, status) {
-    const addBook = new Books(book, authors, pages, status);
-    addBook.sayname();
 
+//add books to library
+function addBookToLibrary(book, author, page, status) {
+    const addBook = new Books(book, author, page, status);
+    addBook.sayname();
     myLibrary.push(addBook);
+    document.getElementById("content").innerHTML = "";
+    displayBook();
+    
+    
 }
 
-
+//UUID
 function uuidv4() {
   return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
     (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
   );
 }
 
+// LOOP THRU THE ARRAY
+
+ function displayBook() {
+  
+
+    for(let i=0; i<myLibrary.length; i++){
+
+            let card = document.createElement("div");
+            card.classList.add("cards");
+            card.id = myLibrary[i].bookID;
+            card.classList.add(`${myLibrary.bookid}`)
+
+            // Title
+            let title = document.createElement("p");
+            title.classList.add("title");
+            title.textContent = myLibrary[i].book;
+            card.appendChild(title);
+
+            // Author
+            let author = document.createElement("p");
+            author.textContent = myLibrary[i].author;
+            card.appendChild(author);
+
+            // Pages
+            let page = document.createElement("p");
+            page.textContent = myLibrary[i].page;
+            card.appendChild(page);
+
+            // Button container
+            let btnContainer = document.createElement("div");
+            btnContainer.classList.add("content-btns");
+
+            // Read button
+            let progressBtn = document.createElement("button");
+            progressBtn.id = "progress";
+            progressBtn.textContent = "Read";
+            btnContainer.appendChild(progressBtn);
+
+            // Delete button
+            let deleteBtn = document.createElement("button");
+            deleteBtn.classList.add("deleteBtn");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.onclick = removeBook;
+            btnContainer.appendChild(deleteBtn);
 
 
+            // Append button container to card
+            card.appendChild(btnContainer);
+
+            // Append card to content
+            document.getElementById("content").appendChild(card);
+
+    }};
 
 
+const bookid = 0
+function removeBook() {
+    const bookid = this.parentElement.parentElement.classList;
 
+    const findBook = myLibrary.findIndex(
+      (element) => element.bookid === bookid
+    );
+    const delBook = myLibrary.splice(findBook, 1);
+    this.parentElement.parentElement.remove()
+    
+}
+  removeBook();

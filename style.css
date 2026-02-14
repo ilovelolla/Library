@@ -4,8 +4,7 @@ padding:0;
 font-family: "Roboto", sans-serif;
 }
 .container {
-    
-    flex-direction: column;
+    background-color: aquamarine;
 }
 .header {
     background-color: #d9c1bb;
@@ -13,10 +12,11 @@ font-family: "Roboto", sans-serif;
     display: flex;
     justify-content: center;
     height: 80px;
-  
+     width: 100vw;
+    
 }
 .body {
-    background-color: #45a049;
+    background-color: #F3E8DF;
     position: absolute;
     text-align: center;
     width: 100vw;
@@ -24,9 +24,70 @@ font-family: "Roboto", sans-serif;
     overflow-y: hidden;
    
 }
+
+
+/* CARDS */
+
 #content {
-  display: inline-block;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 310px));;
+  gap: 15px;
+  margin: 40px;
 }
+.cards p {
+  color: black;
+  font-weight: normal;
+  font-size: 16px;
+  margin: 20px;
+  text-align: left;
+}
+
+.cards .title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.cards {
+  background-color: aquamarine;
+    height: 220px;
+    border-radius: 5px;
+    border-left: 10px solid red
+}
+
+.content-btns {
+  display: flex;
+  gap: 10px;
+ margin-left: 125px;
+ margin-top: 45px;
+}
+
+.content-btns button {
+  padding: 8px;
+  border-radius: 5px;
+  width: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .header span { 
     font-family:"Wellfleet", serif;
@@ -49,14 +110,22 @@ font-family: "Roboto", sans-serif;
   padding: 0;
 }
 
+/* CARDS */
+
+
+
+
+
 
 
 /* FORMS */
 #modal {
   display: none;
- position: relative;
- bottom: 70px;
- z-index:101;    
+ position: fixed;
+ bottom: 50px;
+right: 440px;
+ z-index:101;   
+ 
 }
 h2 {
   text-align: center;
@@ -76,11 +145,11 @@ h2 {
 form {
  text-align: left;
   width: 400px;
-  height: 450px;
+  height: 430px;
   border-radius: 10px;
   background-color: #f2f2f2;
   padding: 20px;
-  margin-top: 30px;
+
 }
 
 label {display: block;}
@@ -109,6 +178,7 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
 
 div.opacity-provider {
     display:none;    
