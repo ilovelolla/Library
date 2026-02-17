@@ -3,6 +3,7 @@ const addBtn = document.querySelector(".plus-btn");
 const closeBtn = document.querySelector(".close-btn");
 const form = document.getElementById("myForm");
 const deleteBtn = document.querySelector("delete");
+const progressBtn = document.querySelector("progress")
 
 
 
@@ -40,9 +41,17 @@ function Books(book, author, page, status) {
     this.status = status
     this.bookID =  uuidv4() 
     this.sayname = function() {
-        console.log(this.bookID)
+        console.log(this.status)
     }
 }
+
+
+  Books.prototype.getStatus = function() {
+              if (this.status === "Read") {
+                return progressBtn.textContent === "Read"
+              } else if  (this.status === "Not Read") {
+              return progressBtn.textContent === "Not Read"
+            }};
 
 //received data
 function formDatas(e) {
@@ -54,7 +63,6 @@ function formDatas(e) {
 
   addBookToLibrary(book, author, page, status);
   form.reset();
-
    modal.style.display = "none";
    opacity.style.display = "none";
 }
@@ -64,10 +72,7 @@ function addBookToLibrary(book, author, page, status) {
     const addBook = new Books(book, author, page, status);
     addBook.sayname();
     myLibrary.push(addBook);
-    document.getElementById("content").innerHTML = "";
-    displayBook();
-    
-    
+    displayBook(); 
 }
 
 //UUID
@@ -80,8 +85,9 @@ function uuidv4() {
 // LOOP THRU THE ARRAY
 
  function displayBook() {
-  
 
+
+  document.getElementById("content").innerHTML = "";
     for(let i=0; i<myLibrary.length; i++){
 
             let card = document.createElement("div");
@@ -111,9 +117,23 @@ function uuidv4() {
 
             // Read button
             let progressBtn = document.createElement("button");
-            progressBtn.id = "progress";
-            progressBtn.textContent = "Read";
+            progressBtn.classList.add("progress");
             btnContainer.appendChild(progressBtn);
+            
+            if(myLibrary[i].status ==="Read") {
+              progressBtn.textContent = "Read"
+            } else if (myLibrary[i].status ==="Not Read") {
+              progressBtn.textContent = "Not Read"
+            }
+
+            progressBtn.addEventListener("click", () => {
+             if (progressBtn.textContent === "Read") {
+            progressBtn.textContent = "Not Read";
+            } else if (progressBtn.textContent === "Not Read") {
+             progressBtn.textContent = "Read";
+               }
+            });
+
 
             // Delete button
             let deleteBtn = document.createElement("button");
@@ -133,6 +153,7 @@ function uuidv4() {
 
 
 const bookid = 0
+
 function removeBook() {
     const bookid = this.parentElement.parentElement.classList;
 
@@ -143,4 +164,5 @@ function removeBook() {
     this.parentElement.parentElement.remove()
     
 }
-  removeBook();
+
+
