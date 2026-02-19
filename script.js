@@ -5,16 +5,14 @@ const form = document.getElementById("myForm");
 const deleteBtn = document.querySelector("delete");
 const progressBtn = document.querySelector("progress")
 
+var modal = document.getElementById("modal");
+var content = document.getElementById("content");
+var opacity = document.getElementById("opacity");
 
 
 closeBtn.addEventListener("click", hideModal);
 addBtn.addEventListener("click", openModal);
 form.addEventListener("submit", formDatas);
-
-
-var modal = document.getElementById("modal");
-var content = document.getElementById("content");
-var opacity = document.getElementById("opacity");
 
 
 function hideModal() {
@@ -29,31 +27,20 @@ function openModal() {
     
 }
 
-
-// Array
 const myLibrary = []
 
-//Constructor
+
 function Books(book, author, page, status) {
     this.book = book
     this.author = author
     this.page = page
     this.status = status
     this.bookID =  uuidv4() 
-    this.sayname = function() {
-        console.log(this.status)
+    this.sayBook = function() { 
     }
 }
 
 
-  Books.prototype.getStatus = function() {
-              if (this.status === "Read") {
-                return progressBtn.textContent === "Read"
-              } else if  (this.status === "Not Read") {
-              return progressBtn.textContent === "Not Read"
-            }};
-
-//received data
 function formDatas(e) {
    e.preventDefault();
   let book = document.getElementById("title").value
@@ -67,25 +54,23 @@ function formDatas(e) {
    opacity.style.display = "none";
 }
 
-//add books to library
+
 function addBookToLibrary(book, author, page, status) {
     const addBook = new Books(book, author, page, status);
-    addBook.sayname();
+    addBook.sayBook();
     myLibrary.push(addBook);
     displayBook(); 
 }
 
-//UUID
+
 function uuidv4() {
   return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
     (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
   );
 }
 
-// LOOP THRU THE ARRAY
 
  function displayBook() {
-
 
   document.getElementById("content").innerHTML = "";
     for(let i=0; i<myLibrary.length; i++){
@@ -108,7 +93,7 @@ function uuidv4() {
 
             // Pages
             let page = document.createElement("p");
-            page.textContent = myLibrary[i].page;
+            page.textContent = myLibrary[i].page +" " + "Pages";
             card.appendChild(page);
 
             // Button container
@@ -133,7 +118,6 @@ function uuidv4() {
              progressBtn.textContent = "Read";
                }
             });
-
 
             // Delete button
             let deleteBtn = document.createElement("button");
