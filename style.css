@@ -5,6 +5,7 @@ font-family: "Roboto", sans-serif;
 }
 body {
   background-color: #F3E8DF;
+  text-align: center;
 }
 .container {
     background-color: #F3E8DF;
@@ -95,11 +96,8 @@ body {
 
 /* FORMS */
 #modal {
-  display: none;
- position: fixed;
- bottom: 30px;
-right: 470px;
- z-index:101;   
+  display: inline-block;
+  z-index:101;   
  
 }
 h2 {
