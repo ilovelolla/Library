@@ -48,10 +48,13 @@ function formDatas(e) {
   let page = document.getElementById("pages").value
   let status = document.getElementById("status").value
 
+   if (book ==="" ||author ==="" || page ==="" ) {
+    alert ("Input cannot be blank.");
+    throw "error"}
+
   addBookToLibrary(book, author, page, status);
   form.reset();
-   modal.style.display = "none";
-   opacity.style.display = "none";
+   hideModal();
 }
 
 
